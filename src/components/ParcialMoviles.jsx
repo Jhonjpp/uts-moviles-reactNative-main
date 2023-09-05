@@ -4,9 +4,13 @@ import { StyleSheet, Text, View, TextInput, ToastAndroid, Button } from 'react-n
 
 const ParcialMoviles = () => {
 
-  const [numero, setNumero ] = useState(0)
-  const [arrayprom, setArrayprom] = useState([]);
-  const empleada = { }
+  const [nombre, setNombre] = useState("");
+  const [valor, setValor ] = useState(0);
+  const [persona, setPersona] = useState([
+    {
+      nombre: 'arroz',
+      valor: 10.000,
+    }]);
   const [mostrarResultado, setMostrarResultado ] = useState(false);
   const [resultado, setResultado ] = useState(0);
  
@@ -15,17 +19,17 @@ const ParcialMoviles = () => {
     //ToastAndroid.show("se cargo la aplicacion corectamente", ToastAndroid.SHORT)
   }, [])
 
-  const aggNumero = () => {
-    console.log(numero)
-    arrayprom.push(numero)
-    setNumero(0)
-    ToastAndroid.show('Se ha agrego:'+numero+", van: "+miArray, ToastAndroid.SHORT);
+  const aggPersona = () => {
+    console.log(nombre, valor)
+    persona.push(nombre, valor)
+    setPersona(0)
+    ToastAndroid.show('Se ha agrego:'+nombre, ToastAndroid.SHORT);
   }
 
-  const promArray = () => {
+  const sumaArr = () => {
     let total = parseInt(0);
 
-    arrayprom.forEach((n) => {
+    persona.forEach((n) => {
       total = total + parseInt(n)
     })
 
@@ -49,15 +53,17 @@ const ParcialMoviles = () => {
 
   return (
     <View >
-      <Text>SUMAR ARRAY</Text>
+      <Text>CUENTA DE COMPRAS</Text>
 
-      <TextInput style={estilos.inputsTexto} onChangeText={setNumero} value={numero} placeholder="Numero 1" keyboardType="numeric" />
+      <TextInput style={estilos.inputsTexto} onChangeText={setNombre} value={nombre} placeholder="nombre" keyboardType="default" />
 
-      <Button onPress={aggNumero} title="Agregar un número al array" color="#841584" />
+      <TextInput style={estilos.inputsTexto} onChangeText={setValor} value={valor} placeholder="valor" keyboardType="numeric" />
 
-      <Button onPress={promArray} title="Promedio" color="#FF0000" />
+      <Button onPress={aggPersona} title="Agregar al array" color="#841584" />
 
-      {mostrarResultado && (<Text>El promedio del array es {resultado}</Text>)}
+      <Button onPress={sumaArr} title="Sumar valores" color="#FF0000" />
+
+      {mostrarResultado && (<Text>El total es {resultado}</Text>)}
 
 
     </View>
