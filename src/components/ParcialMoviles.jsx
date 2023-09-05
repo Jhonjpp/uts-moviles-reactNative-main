@@ -6,12 +6,8 @@ const ParcialMoviles = () => {
 
   const [nombre, setNombre] = useState("");
   const [valor, setValor ] = useState(0);
-  const [persona, setPersona] = useState([
-    {
-      nombre: 'arroz',
-      valor: 10.000,
-    }]);
-  const [mostrarResultado, setMostrarResultado ] = useState(false);
+  const [personaArray, setPersonaArray] = useState([]);
+  const [mostrarResul, setMostrarResul] = useState(false);
   const [resultado, setResultado ] = useState(0);
  
   useEffect(() => {
@@ -19,25 +15,27 @@ const ParcialMoviles = () => {
     //ToastAndroid.show("se cargo la aplicacion corectamente", ToastAndroid.SHORT)
   }, [])
 
-  const aggPersona = () => {
-    console.log(nombre, valor)
-    persona.push(nombre, valor)
-    setPersona(0)
-    ToastAndroid.show('Se ha agrego:'+nombre, ToastAndroid.SHORT);
+  const aggArray = () => {
+    const aggpersona = {nombre,valor};
+    personaArray.push(aggpersona);
+    setNombre("");
+    setValor(0);
+    console.log(aggpersona);
+    //setPersonaArray(0);
+    ToastAndroid.show('Se ha agrego un nuevo producto', ToastAndroid.SHORT);
   }
 
   const sumaArr = () => {
-    let total = parseInt(0);
-
-    persona.forEach((n) => {
-      total = total + parseInt(n)
-    })
-
-    setResultado(total)
-    setMostrarResultado(true);
-    
-    ToastAndroid.show('Se ha agregado el numero '+numero, ToastAndroid.SHORT);
-  }
+    let total = 0;
+  
+    personaArray.forEach((n) => {
+      total += parseInt(n.valor);
+    });
+  
+    setResultado(total);
+    setMostrarResul(true);
+    ToastAndroid.show(`El total de la compra es: ` + total, ToastAndroid.SHORT);
+  };
 
   const estilos = StyleSheet.create({
     inputsTexto: {
@@ -53,17 +51,17 @@ const ParcialMoviles = () => {
 
   return (
     <View >
-      <Text>CUENTA DE COMPRAS</Text>
+      <Text>TIQUETE DE COMPRAS</Text>
 
       <TextInput style={estilos.inputsTexto} onChangeText={setNombre} value={nombre} placeholder="nombre" keyboardType="default" />
 
       <TextInput style={estilos.inputsTexto} onChangeText={setValor} value={valor} placeholder="valor" keyboardType="numeric" />
 
-      <Button onPress={aggPersona} title="Agregar al array" color="#841584" />
+      <Button onPress={aggArray} title="Agregar al array" color="#841584" />
 
-      <Button onPress={sumaArr} title="Sumar valores" color="#FF0000" />
+      <Button onPress={sumaArr} title="Total compra" color="#FF0000" />
 
-      {mostrarResultado && (<Text>El total es {resultado}</Text>)}
+      {mostrarResul && (<Text>El total de la compra es: {resultado}</Text>)}
 
 
     </View>

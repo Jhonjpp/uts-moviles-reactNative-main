@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import SumarArray from "./src/components/SumarArray.jsx";
 import Calculadora from "./src/components/Calculadora.jsx";
-import ExplicacionseState from "./src/components/ExplicandoseState.jsx";
+//import ExplicacionuseState from "./src/components/ExplicandoseState.jsx";
 import ExplicandoRendrizadoCondicional from './src/components/Renderizadocondicional.jsx';
 import ParcialMoviles from './src/components/ParcialMoviles.jsx';
 import EvaluarArray from './src/components/EvaluarArray';
@@ -16,7 +16,7 @@ export default function App() {
   
   return (
     <View style={estilos.container}>
-      <SumarArray/>
+      <ParcialMoviles/>
       <StatusBar style="auto" />
     </View>
   );
@@ -25,7 +25,7 @@ export default function App() {
 const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#White',
     alignItems: 'center',
     justifyContent: 'center',
   },

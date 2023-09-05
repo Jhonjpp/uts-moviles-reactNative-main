@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, ToastAndroid, Button } from 'react-native';
 //import Sound from 'react-native-sound';
 
-const ExplicandouseState = () => {
+const ExplicacionuseState = () => {
 
   const [nombre, setNombre] = useState("Pedro");
 
@@ -39,4 +39,4 @@ const ExplicandouseState = () => {
   );
 };
 
-export default ExplicandouseState
+export default ExplicacionuseState
